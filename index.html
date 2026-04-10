@@ -659,7 +659,7 @@ function renderResultPage() {
     '<div class="stat-card"><div class="stat-num">' + formalCnt + '</div><div class="stat-lbl">정중체 선호</div></div>' +
     '<div class="stat-card"><div class="stat-num">' + casualCnt + '</div><div class="stat-lbl">친근체 선호</div></div>';
 
-  const metaNotifs = buildNotifs('OO','남','20대');}
+  const metaNotifs = buildNotifs('OO','남','20대');
 
   if (currentTab === 'overview') {
     if (!total) { document.getElementById('tab-overview').innerHTML = '<div class="empty-state">아직 응답이 없어요.</div>'; return; }
@@ -798,6 +798,7 @@ if (currentTab === 'age') {
     });
     el.innerHTML = html;
   }
+} // end renderResultPage
 
 function deleteSelected() {
   const checked = document.querySelectorAll('.resp-check:checked');
