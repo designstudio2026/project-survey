@@ -659,7 +659,7 @@ function renderResultPage() {
     '<div class="stat-card"><div class="stat-num">' + formalCnt + '</div><div class="stat-lbl">정중체 선호</div></div>' +
     '<div class="stat-card"><div class="stat-num">' + casualCnt + '</div><div class="stat-lbl">친근체 선호</div></div>';
 
-  const metaNotifs = buildNotifs('OO','남','20대');
+  const metaNotifs = buildNotifs('OO','남','20대');}
 
   if (currentTab === 'overview') {
     if (!total) { document.getElementById('tab-overview').innerHTML = '<div class="empty-state">아직 응답이 없어요.</div>'; return; }
@@ -692,25 +692,26 @@ function renderResultPage() {
   }
 
   if (currentTab === 'gender') {
-    let html = '<div class="r-section-label">성별 필터</div><div class="filter-bar">';
-    ['전체',...GENDERS].forEach(v => {
-      html += '<button class="filter-chip' + (v === genderFilter ? ' on' : '') + '" onclick="genderFilter='' + v + '';renderResultPage();">' + v + '</button>';
-    });
-    html += '</div>';
-    document.getElementById('tab-gender').innerHTML = html;
-    const sub = genderFilter === '전체' ? allResponses : allResponses.filter(r => r.gender === genderFilter);
-    renderNotifTable('tab-gender', sub, metaNotifs, false, true);
-  }
-  if (currentTab === 'age') {
-    let html = '<div class="r-section-label">연령대 필터</div><div class="filter-bar">';
-    ['전체',...AGES].forEach(v => {
-      html += '<button class="filter-chip' + (v === ageFilter ? ' on' : '') + '" onclick="ageFilter='' + v + '';renderResultPage();">' + v + '</button>';
-    });
-    html += '</div>';
-    document.getElementById('tab-age').innerHTML = html;
-    const sub = ageFilter === '전체' ? allResponses : allResponses.filter(r => r.age === ageFilter);
-    renderNotifTable('tab-age', sub, metaNotifs, false, false, true);
-  }
+  let html = '<div class="r-section-label">성별 필터</div><div class="filter-bar">';
+  ['전체',...GENDERS].forEach(v => {
+    html += '<button class="filter-chip' + (v === genderFilter ? ' on' : '') + '" onclick="genderFilter=\'' + v + '\';renderResultPage();">' + v + '</button>';
+  });
+  html += '</div>';
+  document.getElementById('tab-gender').innerHTML = html;
+  const sub = genderFilter === '전체' ? allResponses : allResponses.filter(r => r.gender === genderFilter);
+  renderNotifTable('tab-gender', sub, metaNotifs, false, true);
+}
+
+if (currentTab === 'age') {
+  let html = '<div class="r-section-label">연령대 필터</div><div class="filter-bar">';
+  ['전체',...AGES].forEach(v => {
+    html += '<button class="filter-chip' + (v === ageFilter ? ' on' : '') + '" onclick="ageFilter=\'' + v + '\';renderResultPage();">' + v + '</button>';
+  });
+  html += '</div>';
+  document.getElementById('tab-age').innerHTML = html;
+  const sub = ageFilter === '전체' ? allResponses : allResponses.filter(r => r.age === ageFilter);
+  renderNotifTable('tab-age', sub, metaNotifs, false, false, true);
+}
   if (currentTab === 'pref') {
     if (!total) { document.getElementById('tab-pref').innerHTML = '<div class="empty-state">아직 응답이 없어요.</div>'; return; }
     const NIDS = ['n1','n2','n3','n4','n5','n6'];
